@@ -1,0 +1,2578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>It's for you</title>
+
+<!-- Premium Magazine Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   BASIC
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090909;
+    color:#f5f0e8;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   LOADING / OPENING SCREEN
+========================================================= */
+
+.opening{
+    position:fixed;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.55)
+        ),
+        url("photos/entrance.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    width:100vw;
+    height:100vh;
+
+    z-index:9999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    transition:1.5s ease;
+}
+
+.opening.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.opening-inner{
+    animation:openingReveal 2s ease;
+}
+
+.opening-small{
+    font-size:10px;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    color:#aaa08f;
+    margin-bottom:28px;
+}
+
+.opening-name{
+    font-family:"Italiana",serif;
+    font-size:clamp(65px,15vw,150px);
+    font-weight:400;
+    letter-spacing:-4px;
+}
+
+.opening-from{
+    margin-top:20px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    font-style:italic;
+    color:#cfc5b5;
+}
+
+.open-button{
+    display:block;
+    margin:24px auto 0;
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+    z-index:10000;
+    white-space:nowrap;
+
+    padding:16px 35px;
+
+    border:1px solid #756b5b;
+    border-radius:100px;
+
+    background:transparent;
+    color:#eee8dd;
+
+    font-size:10px;
+    letter-spacing:4px;
+
+    cursor:pointer;
+    transition:.4s;
+}
+
+.open-button:hover{
+    background:#eee8dd;
+    color:#111;
+}
+
+@keyframes openingReveal{
+
+    0%{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* =========================================================
+   MAGAZINE
+========================================================= */
+
+.magazine{
+    max-width:1400px;
+    margin:auto;
+}
+
+/* =========================================================
+   COMMON PAGE
+========================================================= */
+
+.page{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+/* =========================================================
+   COVER
+========================================================= */
+
+.cover{
+
+    min-height:100svh;
+
+    display:flex;
+    align-items:flex-end;
+
+    padding:7%;
+
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.95) 0%,
+            rgba(0,0,0,.5) 40%,
+            rgba(0,0,0,.05) 100%
+        ),
+        url("photos/cover.jpg");
+
+    background-position:center;
+    background-size:cover;
+}
+
+.cover-content{
+    width:100%;
+}
+
+.cover-top{
+    position:absolute;
+    top:35px;
+    left:7%;
+    right:7%;
+
+    display:flex;
+    justify-content:space-between;
+
+    font-size:9px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    color:#d8d0c3;
+}
+
+.cover-eyebrow{
+    font-size:10px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#d4c9b8;
+
+    margin-bottom:25px;
+}
+
+.cover-title{
+    font-family:"Italiana",serif;
+
+    font-size:clamp(75px,15vw,190px);
+
+    font-weight:400;
+
+    line-height:.78;
+
+    letter-spacing:-6px;
+
+    text-shadow:0 5px 35px rgba(0,0,0,.5);
+}
+
+.cover-subtitle{
+    margin-top:35px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(23px,3vw,38px);
+
+    font-style:italic;
+
+    color:#e5ddd0;
+}
+
+.cover-bottom{
+
+    display:flex;
+    justify-content:space-between;
+
+    border-top:1px solid rgba(255,255,255,.35);
+
+    margin-top:45px;
+    padding-top:15px;
+
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    color:#cfc6b8;
+}
+
+/* =========================================================
+   PAGE NUMBERS
+========================================================= */
+
+.page-number{
+
+    position:absolute;
+
+    top:35px;
+    right:7%;
+
+    font-size:9px;
+    letter-spacing:4px;
+
+    color:#80786c;
+}
+
+/* =========================================================
+   TITLE PAGE
+========================================================= */
+
+.intro-page{
+
+    min-height:100svh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:10%;
+}
+
+.intro-content{
+    max-width:850px;
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#a89c8a;
+    margin-bottom:30px;
+}
+
+.big-title{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(60px,10vw,125px);
+
+    font-weight:400;
+
+    line-height:.85;
+}
+
+.line{
+
+    width:70px;
+    height:1px;
+
+    background:#8f8574;
+
+    margin:40px auto;
+}
+
+.intro-quote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    line-height:1.5;
+
+    color:#c8bfb2;
+}
+
+/* =========================================================
+   PHOTO EDITORIAL PAGE
+========================================================= */
+
+.editorial{
+
+    min-height:100svh;
+
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    gap:70px;
+
+    align-items:center;
+
+    padding:9%;
+}
+
+.photo-container{
+    position:relative;
+}
+
+.photo-container img{
+
+    width:100%;
+
+    max-height:780px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:1.2s ease;
+}
+
+.photo-container:hover img{
+    transform:scale(1.025);
+}
+
+.photo-caption{
+
+    position:absolute;
+
+    bottom:20px;
+    left:20px;
+
+    font-size:9px;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    text-shadow:0 2px 10px black;
+}
+
+.editorial-text h2{
+
+    font-family:"Italiana",serif;
+
+    font-size:clamp(55px,7vw,100px);
+
+    font-weight:400;
+
+    line-height:.85;
+}
+
+.editorial-text p{
+
+    margin-top:35px;
+
+    max-width:450px;
+
+    color:#a9a39a;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+/* =========================================================
+   FULL PHOTO PAGE
+========================================================= */
+
+.full-photo{
+
+    min-height:100svh;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:7%;
+
+    background-position:center;
+    background-size:cover;
+
+    position:relative;
+}
+
+.full-photo::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.9),
+            transparent 65%
+        );
+
+}
+
+.full-photo-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:800px;
+}
+
+.full-photo h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(55px,8vw,110px);
+
+    font-weight:400;
+
+    line-height:.9;
+}
+
+.full-photo p{
+
+    margin-top:25px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:25px;
+
+    color:#ddd5c9;
+}
+
+/* =========================================================
+   MEMORY GRID
+========================================================= */
+
+.memories{
+
+    padding:9% 7%;
+}
+
+.memory-heading{
+
+    margin-bottom:65px;
+}
+
+.memory-heading h2{
+
+    font-family:"Italiana",serif;
+
+    font-size:clamp(65px,11vw,140px);
+
+    font-weight:400;
+
+    line-height:.75;
+}
+
+.memory-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(12,1fr);
+
+    gap:18px;
+}
+
+.memory{
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.memory img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:1s ease;
+}
+
+.memory:hover img{
+    transform:scale(1.05);
+}
+
+.memory-1{
+    grid-column:span 7;
+    height:600px;
+}
+
+.memory-2{
+    grid-column:span 5;
+    height:600px;
+}
+
+.memory-3{
+    grid-column:span 5;
+    height:450px;
+}
+
+.memory-4{
+    grid-column:span 7;
+    height:450px;
+}
+
+.memory-label{
+
+    position:absolute;
+
+    left:20px;
+    bottom:20px;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    text-shadow:0 2px 10px black;
+}
+
+
+/* =========================================================
+   LETTER PAGE
+========================================================= */
+
+.letter-page{
+
+    background:#eee7db;
+
+    color:#181716;
+
+    padding:10% 12%;
+}
+
+.letter-wrapper{
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.letter-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    border-bottom:1px solid #bbb1a0;
+
+    padding-bottom:15px;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#686157;
+}
+
+.letter-title{
+
+    font-family:"Italiana",serif;
+
+    font-size:clamp(75px,12vw,145px);
+
+    font-weight:400;
+
+    line-height:.75;
+
+    margin:70px 0;
+}
+
+.letter-text{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(19px,2.2vw,25px);
+
+    line-height:1.6;
+}
+
+.letter-text p{
+
+    margin-bottom:28px;
+}
+
+.signature{
+
+    margin-top:70px;
+
+    text-align:right;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:40px;
+
+    font-style:italic;
+}
+
+/* =========================================================
+   FINAL PAGE
+========================================================= */
+
+.final-page{
+
+    min-height:100svh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:8%;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.9)
+        ),
+        url("photos/photo6.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.final-content{
+    max-width:900px;
+}
+
+.final-small{
+
+    font-size:10px;
+
+    letter-spacing:7px;
+
+    text-transform:uppercase;
+
+    color:#cfc4b4;
+
+    margin-bottom:30px;
+}
+
+.final-title{
+
+    font-family:"Italiana",serif;
+
+    font-size:clamp(75px,14vw,175px);
+
+    font-weight:400;
+
+    line-height:.75;
+}
+
+.final-message{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:28px;
+
+    font-style:italic;
+
+    margin-top:35px;
+
+    color:#ddd4c7;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:#6d675e;
+}
+
+/* =========================================================
+   FLOATING MUSIC
+========================================================= */
+
+.music-button{
+
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    border:1px solid #817667;
+
+    background:#eee7db;
+
+    color:#111;
+
+    z-index:100;
+
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(45px);
+
+    transition:
+
+        opacity 1.2s ease,
+
+        transform 1.2s ease;
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-20px;
+
+    font-size:15px;
+
+    opacity:.7;
+
+    pointer-events:none;
+
+    animation:floatHeart 6s linear forwards;
+
+    z-index:50;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0) scale(.8);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.7;
+    }
+
+    100%{
+        transform:translateY(-100vh) rotate(20deg) scale(1.4);
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .cover{
+        padding:8%;
+    }
+
+    .cover-title{
+        font-size:23vw;
+        letter-spacing:-3px;
+    }
+
+    .cover-top{
+        top:25px;
+        left:8%;
+        right:8%;
+    }
+
+    .cover-bottom{
+        gap:15px;
+    }
+
+    .editorial{
+
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+        padding:15% 8%;
+    }
+
+    .editorial-text{
+        order:2;
+    }
+
+    .editorial-text h2{
+        font-size:70px;
+    }
+
+    .memory-grid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .memory-1,
+    .memory-2,
+    .memory-3,
+    .memory-4{
+
+        grid-column:span 1;
+
+        height:430px;
+    }
+
+    .letter-page{
+        padding:18% 8%;
+    }
+
+    .letter-title{
+        margin:60px 0;
+    }
+
+    .letter-text{
+        font-size:20px;
+    }
+
+    .final-title{
+        font-size:24vw;
+    }
+
+}
+
+/* =========================================================
+   CUSTOM CURSOR DESKTOP
+========================================================= */
+
+@media(min-width:900px){
+
+    body{
+        cursor:default;
+    }
+
+}
+
+
+
+
+
+
+/* =========================================================
+   ROMANTIC EDITORIAL FINISH — all slides except the letter
+========================================================= */
+:root{
+  --love-rose:#d7a0a9;
+  --love-rose-soft:rgba(215,160,169,.16);
+  --love-gold:#c9ad86;
+  --love-cream:#f5eee7;
+}
+
+/* Subtle rose-gold frame and glow gives the magazine a unified finish. */
+.page:not(.letter-page){
+  box-shadow:inset 0 0 0 1px rgba(215,160,169,.22), inset 0 0 90px rgba(93,35,57,.09);
+}
+.page:not(.letter-page)::before,
+.travel-page::before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(215,160,169,.24);
+  pointer-events:none;
+  z-index:2;
+}
+.page:not(.letter-page)::after,
+.travel-page::after{
+  content:"♡";
+  position:absolute;
+  top:27px;
+  left:30px;
+  color:rgba(230,177,185,.78);
+  font-family:"Cormorant Garamond",serif;
+  font-size:20px;
+  line-height:1;
+  pointer-events:none;
+  z-index:3;
+  text-shadow:0 0 18px rgba(215,160,169,.35);
+}
+
+/* Editorial pages get a soft romantic wash without covering their photos. */
+.intro-page,
+.editorial,
+.memories,
+.final-page{
+  background-color:#100d0f;
+}
+.intro-page,
+.editorial,
+.memories{
+  background-image:radial-gradient(ellipse at 15% 12%, rgba(131,57,78,.14), transparent 42%),
+                   radial-gradient(ellipse at 88% 88%, rgba(185,143,105,.08), transparent 38%);
+}
+.eyebrow,.cover-eyebrow,.small-title{
+  color:var(--love-rose);
+}
+.big-title,.editorial-text h2,.memory-heading h2,.final-title{
+  text-shadow:0 8px 32px rgba(215,160,169,.11);
+}
+.line{
+  background:linear-gradient(90deg, transparent, var(--love-rose), var(--love-gold), transparent) !important;
+  height:1px;
+  max-width:170px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.page-number{
+  color:#d0a4a7;
+}
+.photo-container,
+.memory,
+.travel-main-photo,
+.travel-card{
+  box-shadow:0 14px 38px rgba(0,0,0,.28), 0 0 0 1px rgba(215,160,169,.24);
+}
+.photo-container img,
+.memory img{
+  transition:transform .8s ease, filter .8s ease;
+}
+.photo-container:hover img,
+.memory:hover img{
+  transform:scale(1.025);
+  filter:saturate(1.06);
+}
+.photo-caption,
+.memory-label{
+  text-shadow:0 2px 16px rgba(0,0,0,.9);
+}
+.cover-bottom{
+  border-top-color:rgba(215,160,169,.55);
+}
+.cover-top,.cover-bottom{
+  color:#ead8d7;
+}
+.final-page .final-message{
+  color:#f0d9dc;
+}
+
+/* Matching romantic travel spreads; keep all photos and the letter untouched. */
+.travel-chapter{
+  background:#100b0e;
+  color:#f5eee7;
+}
+.travel-page{
+  background-color:#100b0e;
+  color:#f5eee7;
+  box-shadow:inset 0 0 0 1px rgba(215,160,169,.22), inset 0 0 90px rgba(93,35,57,.12);
+}
+.travel-page-one{
+  background-image:radial-gradient(ellipse at 8% 10%, rgba(131,57,78,.19), transparent 44%),
+                   radial-gradient(ellipse at 95% 90%, rgba(185,143,105,.08), transparent 35%);
+}
+.travel-page .travel-top{
+  border-bottom-color:rgba(215,160,169,.38);
+  color:#d8b7b8;
+}
+.travel-heading h1,.travel-two-heading h2{
+  text-shadow:0 8px 30px rgba(215,160,169,.12);
+}
+.travel-intro,.travel-two-heading p:last-child{
+  color:#d2c4c3;
+}
+.travel-footer{
+  color:#d9b7b9;
+  border-top:1px solid rgba(215,160,169,.3);
+  padding-top:12px;
+}
+.travel-card::after,.travel-main-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(242,205,207,.28);
+  pointer-events:none;
+}
+.travel-card img,.travel-main-photo img{
+  filter:saturate(.92) contrast(1.02);
+}
+.travel-card:hover img,.travel-main-photo:hover img{
+  filter:saturate(1.08) contrast(1.02);
+}
+
+@media(max-width:700px){
+  .page:not(.letter-page)::before,.travel-page::before{inset:10px;}
+  .page:not(.letter-page)::after,.travel-page::after{top:17px;left:19px;font-size:17px;}
+  .travel-page-one{padding-bottom:90px;}
+  .travel-heading{width:100%;padding-top:50px;}
+  .travel-main-photo{position:relative;right:auto;top:auto;width:100%;height:42vh;margin-top:35px;}
+  .travel-page-one{min-height:100svh;}
+  .travel-page-two{min-height:100svh;padding-bottom:85px;}
+  .travel-two-heading{width:100%;margin-top:40px;}
+  .travel-grid{position:relative;right:auto;top:auto;width:100%;height:56vh;margin-top:30px;}
+}
+
+
+
+/* =========================================================
+   MEGHUUU UPGRADE PACK — cinematic, romantic, responsive
+   Existing page content, photos and letter styling are preserved.
+========================================================= */
+:root{--upgrade-rose:#e8b8c0;--upgrade-gold:#d8c29a;--upgrade-ink:#090709}
+.opening{isolation:isolate;background-color:#090709;animation:cinematicColor 12s ease-in-out infinite alternate}
+.opening::before{content:"";position:absolute;inset:-5%;z-index:-1;background:inherit;background-size:cover;background-position:center;filter:brightness(.76) saturate(.86);transform:scale(1.04);animation:cinematicZoom 22s ease-in-out infinite alternate}
+.opening::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.52) 100%),linear-gradient(0deg,rgba(8,5,8,.55),transparent 55%);box-shadow:inset 0 0 0 1px rgba(232,184,192,.24),inset 0 0 90px rgba(0,0,0,.3)}
+.opening-inner{position:relative;z-index:2;padding:24px;animation:openingCinema 1.8s cubic-bezier(.2,.8,.2,1) both}
+.opening-small{color:#e7c6c7;letter-spacing:5px;text-shadow:0 0 18px rgba(232,184,192,.25)}
+.opening-name{text-shadow:0 8px 42px rgba(0,0,0,.55),0 0 34px rgba(232,184,192,.12)}
+.opening-from{color:#eadbd7}
+.open-button{border-color:rgba(232,184,192,.7);box-shadow:0 0 0 5px rgba(232,184,192,.045),0 8px 30px rgba(0,0,0,.18);backdrop-filter:blur(8px)}
+.open-button:hover{background:rgba(245,224,225,.94);box-shadow:0 0 28px rgba(232,184,192,.25)}
+@keyframes cinematicZoom{from{transform:scale(1.04)}to{transform:scale(1.13)}}
+@keyframes cinematicColor{from{background-color:#090709}to{background-color:#1b0d13}}
+@keyframes openingCinema{from{opacity:0;transform:translateY(25px) scale(.985);filter:blur(5px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+/* Keep the letter's original paper, typography and layout; only animate its entrance. */
+.letter-wrapper.show,.letter-wrapper.reveal.show{animation:letterArrive 1.15s cubic-bezier(.2,.7,.2,1) both}
+.letter-wrapper .letter-header,.letter-wrapper .letter-title,.letter-wrapper .letter-text p,.letter-wrapper .signature{animation:letterInk 1s ease both}
+.letter-wrapper .letter-title{animation-delay:.12s}
+.letter-wrapper .letter-text p:nth-child(1){animation-delay:.2s}.letter-wrapper .letter-text p:nth-child(2){animation-delay:.28s}.letter-wrapper .letter-text p:nth-child(3){animation-delay:.36s}.letter-wrapper .letter-text p:nth-child(4){animation-delay:.44s}.letter-wrapper .signature{animation-delay:.55s}
+@keyframes letterArrive{from{opacity:0;transform:translateY(22px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes letterInk{from{opacity:.25}to{opacity:1}}
+/* Photo lightbox */
+.lightbox-overlay{position:fixed;inset:0;z-index:1000000;display:flex;align-items:center;justify-content:center;padding:clamp(12px,4vw,44px);background:rgba(7,4,7,.94);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease}
+.lightbox-overlay.is-open{opacity:1;visibility:visible}
+.lightbox-overlay img{display:block;max-width:min(94vw,1400px);max-height:86svh;object-fit:contain;border:1px solid rgba(232,184,192,.42);box-shadow:0 20px 80px rgba(0,0,0,.55);transform:scale(.96);transition:transform .28s ease}
+.lightbox-overlay.is-open img{transform:scale(1)}
+.lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(255,255,255,.28);border-radius:50%;background:rgba(15,10,13,.72);color:#fff;font:24px Georgia,serif;cursor:pointer;transition:background .2s,transform .2s}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{background:rgba(133,70,87,.85);transform:scale(1.05)}
+.lightbox-close{top:18px;right:18px}.lightbox-prev{left:18px;top:50%;transform:translateY(-50%)}.lightbox-next{right:18px;top:50%;transform:translateY(-50%)}
+.lightbox-counter{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#e8d5d8;font-size:11px;letter-spacing:2px}
+[data-lightbox]{cursor:zoom-in}
+[data-lightbox]:focus-visible{outline:2px solid var(--upgrade-rose);outline-offset:4px}
+/* Music control is added because the original script referenced one that was missing. */
+#musicBtn{display:flex;align-items:center;gap:9px;right:clamp(12px,2.4vw,26px);bottom:clamp(12px,2.4vw,26px);padding:12px 17px;border-color:rgba(232,184,192,.45);background:rgba(15,10,13,.82);box-shadow:0 8px 30px rgba(0,0,0,.25);font-size:10px;letter-spacing:1.3px;transition:background .25s,border-color .25s,transform .25s}
+#musicBtn:hover{transform:translateY(-2px);border-color:var(--upgrade-rose)}#musicBtn.playing .music-orb{animation:musicPulse 1.5s ease-in-out infinite}
+.music-orb{width:8px;height:8px;border-radius:50%;background:var(--upgrade-rose);box-shadow:0 0 12px rgba(232,184,192,.75)}
+@keyframes musicPulse{50%{box-shadow:0 0 0 7px rgba(232,184,192,.08),0 0 16px rgba(232,184,192,.85)}}
+/* Gentle petals and tiny glowing particles */
+.romantic-petal{position:fixed;top:-35px;z-index:9990;pointer-events:none;user-select:none;color:#e9b9c4;text-shadow:0 0 12px rgba(232,184,192,.3);animation:petalDrift linear forwards;will-change:transform,opacity}
+@keyframes petalDrift{0%{transform:translate3d(0,-5vh,0) rotate(0deg);opacity:0}12%{opacity:.78}85%{opacity:.55}100%{transform:translate3d(var(--drift,40px),110vh,0) rotate(460deg);opacity:0}}
+#romanticParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.46}
+/* Final surprise and secret message */
+.final-page{isolation:isolate}
+.final-page::before{z-index:0}.final-content{position:relative;z-index:2}
+.final-extra{position:relative;z-index:3;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;margin:30px auto 0;max-width:700px}
+.surprise-action{border:1px solid rgba(232,184,192,.7);border-radius:999px;padding:13px 20px;background:rgba(12,7,10,.46);color:#f8e8e9;font:10px "DM Sans",sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(10px);transition:transform .25s,background .25s,box-shadow .25s}
+.surprise-action:hover{transform:translateY(-2px);background:rgba(115,54,72,.55);box-shadow:0 0 26px rgba(232,184,192,.12)}
+.secret-message{width:100%;max-width:560px;max-height:0;overflow:hidden;opacity:0;transform:translateY(8px);color:#f1d8dc;font:italic 22px/1.5 "Cormorant Garamond",serif;transition:max-height .7s ease,opacity .5s ease,transform .5s ease;padding:0 12px}
+.secret-message.is-revealed{max-height:220px;opacity:1;transform:translateY(0);padding:15px 12px 0}
+.surprise-overlay{position:fixed;inset:0;z-index:1000001;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at center,rgba(71,28,45,.96),rgba(5,4,7,.98) 72%);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s ease;text-align:center}
+.surprise-overlay.is-open{opacity:1;visibility:visible}
+.surprise-card{max-width:700px;animation:surpriseRise .8s cubic-bezier(.2,.8,.2,1) both}
+.surprise-heart{font-size:clamp(48px,10vw,86px);color:#f1c3cd;filter:drop-shadow(0 0 22px rgba(232,184,192,.4));animation:heartBeat 1.7s ease-in-out infinite}
+.surprise-kicker{margin:18px 0;color:#e3b7bf;font-size:10px;letter-spacing:4px;text-transform:uppercase}
+.surprise-heading{font:clamp(42px,9vw,82px)/.98 "Italiana",serif;color:#fff0f1}
+.surprise-copy{max-width:520px;margin:22px auto 28px;color:#e9d7db;font:clamp(19px,3vw,25px)/1.5 "Cormorant Garamond",serif}
+@keyframes surpriseRise{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes heartBeat{0%,100%{transform:scale(1)}15%{transform:scale(1.09)}30%{transform:scale(1)}45%{transform:scale(1.05)}}
+@media(max-width:700px){
+  .opening-inner{width:100%;padding:18px}.opening-name{font-size:clamp(54px,14vw,95px);letter-spacing:-2px;overflow-wrap:anywhere}.opening-small{font-size:9px;letter-spacing:3px}.opening-from{max-width:300px;margin:15px auto 0;font-size:18px;line-height:1.35}.open-button{max-width:calc(100vw - 34px);white-space:normal;padding:14px 18px;letter-spacing:2px;font-size:9px}
+  .letter-page{padding:72px 7% 70px}.letter-header{gap:12px;letter-spacing:2px;font-size:8px}.letter-title{font-size:clamp(64px,17vw,100px);margin:50px 0 42px}.letter-text{font-size:clamp(19px,5.2vw,23px);line-height:1.55}.letter-text p{margin-bottom:23px}.signature{font-size:32px;margin-top:48px}
+  #musicBtn{bottom:12px;right:12px;padding:11px 13px;font-size:9px;letter-spacing:.8px}
+  .lightbox-prev{left:10px}.lightbox-next{right:10px}.lightbox-close{top:10px;right:10px}.lightbox-overlay img{max-width:96vw;max-height:78svh}
+  .final-extra{margin-top:22px;gap:10px}.surprise-action{font-size:9px;padding:12px 15px;letter-spacing:1.4px}.secret-message{font-size:20px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.romantic-petal{display:none}}
+
+
+/* Private letter answer gate — matching the site's romantic pink and cream style. */
+.letter-page.is-locked .letter-wrapper{display:none}
+.letter-answer-gate{max-width:560px;margin:45px auto 70px;padding:clamp(28px,5vw,46px);border:1px solid #d9b0b6;background:linear-gradient(145deg,#fffaf5,#f8e9eb);color:#674653;text-align:center;box-shadow:0 18px 55px rgba(40,15,25,.12);position:relative}
+.letter-answer-gate::before{content:"♡";display:block;color:#bd8190;font:34px Georgia,serif;margin-bottom:12px}
+.letter-gate-kicker{font:10px "DM Sans",sans-serif;letter-spacing:3px;text-transform:uppercase;color:#a56e7d;margin-bottom:15px}
+.letter-gate-title{font:clamp(34px,7vw,48px)/1.05 "Cormorant Garamond",serif;color:#8c5368;margin-bottom:12px}
+.letter-gate-question{font:22px/1.45 "Cormorant Garamond",serif;color:#795a65;margin-bottom:22px}
+.letter-answer-input{display:block;width:100%;padding:15px 18px;border:1px solid #d8a9b6;border-radius:12px;background:rgba(255,255,255,.82);color:#674653;font:16px "DM Sans",sans-serif;outline:none;margin-bottom:13px}
+.letter-answer-input:focus{border-color:#b46e85;box-shadow:0 0 0 3px rgba(180,110,133,.13)}
+.letter-answer-submit{border:1px solid #b8798c;border-radius:999px;padding:13px 24px;background:#b8798c;color:#fffaf8;font:10px "DM Sans",sans-serif;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:transform .2s,background .2s}
+.letter-answer-submit:hover{transform:translateY(-2px);background:#9e6276}
+.letter-answer-feedback{min-height:25px;margin-top:15px;color:#a35c76;font:italic 18px "Cormorant Garamond",serif}
+@media(max-width:480px){.letter-answer-gate{margin:30px auto 50px;padding:25px 20px}}
+
+</style>
+</head>
+
+
+<body>
+<audio id="bgMusic" loop>
+    <source src="music/music.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
+
+<div class="opening" id="opening">
+
+    <div class="opening-inner">
+
+        <div class="opening-small">
+            A Birthday Story
+        </div>
+
+        <div class="opening-name">
+            Meghuuuuma
+        </div>
+
+        <div class="opening-from">
+            A little magazine made with love · ~ Mama
+        </div>
+
+        <button class="open-button" id="curiosityButton" onclick="teaseButtonClick()">
+            IDA NOKKU VOII
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     COVER
+===================================================== -->
+
+<section class="page cover">
+
+    <div class="cover-top">
+        <span>PREMATHO NI KOSAM</span>
+        <span>18 · OCTOBER</span>
+    </div>
+
+    <div class="cover-content reveal">
+
+        
+
+        <h1 class="cover-title">
+            MEGHUMAAA
+        </h1>
+
+        <div class="cover-subtitle">
+            Happiest Birthdayyy, my gurl 🤍
+        </div>
+
+        <div class="cover-bottom">
+
+            <span>Wishes from Mama</span>
+
+            <span>MANA KATHAA</span>
+
+            <span>Made For You</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 02
+===================================================== -->
+
+<section class="page intro-page">
+
+    <div class="page-number">
+        02
+    </div>
+
+    <div class="intro-content reveal">
+
+        <div class="eyebrow">
+            Dear Meghuuuu
+        </div>
+
+        <h2 class="big-title">
+            Today isn't<br>
+            just another day.
+        </h2>
+
+        <div class="line"></div>
+
+        <p class="intro-quote">
+            Today is the day the world got a little
+            more beautiful because you were born.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 03
+===================================================== -->
+
+<section class="page editorial">
+
+    <div class="page-number">
+        03
+    </div>
+
+    <div class="photo-container reveal">
+
+        <img src="photos/photo1.jpg" alt="Meghuuuu">
+
+        <div class="photo-caption">
+            The birthday girl ·
+        </div>
+
+    </div>
+
+    <div class="editorial-text reveal">
+
+        <h2>
+            The girl<br>
+            who became<br>
+            a favourite.
+        </h2>
+
+        <p>
+            Nuvvu naa life lo vachinappati nunchi
+            chala moments special ayyayi.
+            Ordinary days kuda konchem beautiful
+            ga anipisthayi.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 04
+===================================================== -->
+
+<section class="page full-photo"
+style="background-image:
+linear-gradient(to top,rgba(0,0,0,.9),transparent 65%),
+url('photos/photo2.jpg');">
+
+    <div class="page-number">
+        04
+    </div>
+
+    <div class="full-photo-content reveal">
+
+        <div class="eyebrow">
+            One of my favourite memories
+        </div>
+
+        <h2>
+            Some moments<br>
+            deserve forever.
+        </h2>
+
+        <p>
+            Ee memories anni naaku yeppatiki special.
+            Inka chala memories kalsi cheyali.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PAGE 05
+===================================================== -->
+
+<section class="page editorial">
+
+    <div class="page-number">
+        05
+    </div>
+
+    <div class="editorial-text reveal">
+
+        
+
+        <h2>
+            Little fights.<br>
+            Big smiles.
+        </h2>
+
+        <p>
+            Manam chinna pilalluu laga adkunedhi,
+            godava padedhi, tease cheskunedhi
+            nakhu chala Ishtam 😁🫂🫂🫂
+        </p>
+
+        <p>
+            Manam Ala chesnapudu antha
+            Tom & Jerry gurthu vasthundhi nakhu 😂
+        </p>
+
+    </div>
+
+    <div class="photo-container reveal">
+
+        <img src="photos/photo3.jpg" alt="Our memory">
+
+        <div class="photo-caption">
+            Tom & Jerry ·
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MEMORY GRID
+===================================================== -->
+
+<section class="page memories">
+
+    <div class="page-number">
+        06
+    </div>
+
+    <div class="memory-heading reveal">
+
+        <div class="eyebrow">
+         · Us
+        </div>
+
+        <h2>
+            OUR<br>
+            MEMORIES
+        </h2>
+
+    </div>
+
+
+    <div class="memory-grid">
+
+        <div class="memory memory-1 reveal">
+
+            <img src="photos/photo4.jpg" alt="Our memory">
+
+            <div class="memory-label">
+                Ila ne happy ga undham.
+            </div>
+
+        </div>
+
+
+        <div class="memory memory-2 reveal">
+
+            <img src="photos/photo5.jpg" alt="Our memory">
+
+            <div class="memory-label">
+                Mana Pelli ainaka photo
+            </div>
+
+        </div>
+
+
+        <div class="memory memory-3 reveal">
+
+            <img src="photos/photo7.jpg" alt="Our memory">
+
+            <div class="memory-label">
+                fav one
+            </div>
+
+        </div>
+
+
+        <div class="memory memory-4 reveal">
+
+            <img src="photos/photo8.jpg" alt="Our memory">
+
+            <div class="memory-label">
+                i've lost in your love
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- ============================= -->
+<!-- OUR FUTURE TRAVELS - 2 PAGES -->
+<!-- ============================= -->
+
+<section class="travel-chapter">
+
+  <!-- PAGE 1 -->
+  <div class="travel-page travel-page-one">
+
+    <div class="travel-top">
+      <span>CHAPTER 04</span>
+      <span>OUR FUTURE</span>
+    </div>
+
+    <div class="travel-heading">
+      <p class="small-title">A LIFE OF ADVENTURE</p>
+
+      <h1>
+        Our <br>
+        <i>future will be like</i><br>
+        
+      </h1>
+
+      <p class="travel-intro">
+        There are still so many roads to take,
+        cities to discover, sunsets to watch,
+        and memories waiting for us.
+      </p>
+    </div>
+
+    <!-- Main Photo -->
+    <div class="travel-main-photo">
+      <img src="photos/photo13.jpg" alt="Our memory">
+      <div class="photo-caption">
+        <span>01</span>
+        <p>Wherever we go,<br>we go together.</p>
+      </div>
+    </div>
+
+    <div class="travel-footer">
+      <span>MEGHU & KIRAN</span>
+      <span>EST. FOREVER</span>
+    </div>
+
+  </div>
+
+
+  <!-- PAGE 2 -->
+  <div class="travel-page travel-page-two">
+
+    <div class="travel-top">
+      <span>THE PLACES</span>
+      <span></span>Kalsi chala chudali
+    </div>
+
+    <div class="travel-two-heading">
+      
+
+      <h2>
+        Our<br>
+        <i>Bucket List</i>
+      </h2>
+
+      <p>
+        One day we'll look back at these photographs
+        and remember all the little adventures that
+        became our favourite memories.
+      </p>
+    </div>
+
+
+    <!-- Photo Grid -->
+    <div class="travel-grid">
+
+      <div class="travel-card large">
+        <img src="photos/photo12.jpg" alt="Our memory">
+        <div class="card-text">
+          <span>01</span>
+          <h3>Somewhere<br>Beautiful</h3>
+        </div>
+      </div>
+
+      <div class="travel-card ">
+        <img src="photos/photo11.jpg" alt="Our memory">
+        <div class="card-text">
+          <span>02</span>
+          <h3>New Roads</h3>
+        </div>
+      </div>
+
+      <div class="travel-card large">
+        <img src="photos/photo14.jpg" alt="Our memory">
+        <div class="card-text">
+          <span>03</span>
+          <h3>New Memories</h3>
+        </div>
+      </div>
+
+
+        <div>
+          <span>OUR NEXT CHAPTER</span>
+          <h3>
+            "Let's collect<br>
+            moments,<br>
+            not miles."
+          </h3>
+        </div>
+    
+
+    </div>
+
+    <div class="travel-footer">
+      <span>THE WORLD IS WAITING</span>
+      <span>PAGE 02</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+    
+
+<!-- ============================= -->
+<!-- TRAVEL CHAPTER CSS -->
+<!-- ============================= -->
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+/* Main Chapter */
+
+.travel-chapter {
+  background: #0d0b06;
+  color: #e1dada;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Each magazine page */
+
+.travel-page {
+  min-height: 100vh;
+  padding: 55px 7vw;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Top small navigation */
+
+.travel-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding-bottom: 15px;
+}
+
+
+/* Main Heading */
+
+.travel-heading {
+  padding-top: 70px;
+  width: 45%;
+}
+
+.small-title {
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+.travel-heading h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(70px, 10vw, 145px);
+  font-weight: 400;
+  line-height: 0.75;
+  letter-spacing: -5px;
+  margin: 0;
+}
+
+
+.travel-heading h1 i {
+  font-weight: 400;
+}
+
+
+.travel-intro {
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 300px;
+  margin-top: 35px;
+  color: #555;
+}
+
+
+/* Main Travel Image */
+
+.travel-main-photo {
+  position: absolute;
+  width: 47%;
+  height: 68%;
+  right: 6vw;
+  top: 18%;
+  overflow: hidden;
+}
+
+
+.travel-main-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85);
+  transition: transform 0.8s ease;
+}
+
+
+.travel-main-photo:hover img {
+  transform: scale(1.03);
+}
+
+
+/* Image caption */
+
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  color: white;
+  background: linear-gradient(
+    transparent,
+    rgba(0,0,0,0.7)
+  );
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+
+.photo-caption span {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+
+.photo-caption p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  line-height: 0.95;
+  margin: 0;
+}
+
+
+/* Footer */
+
+.travel-footer {
+  position: absolute;
+  bottom: 25px;
+  left: 7vw;
+  right: 7vw;
+  display: flex;
+  justify-content: space-between;
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+
+
+/* ========================= */
+/* PAGE 2 */
+/* ========================= */
+
+.travel-page-two {
+  background: #0d0b06;
+  color: #f3efe7;
+}
+
+
+.travel-page-two .travel-top {
+  border-color: rgba(255,255,255,0.25);
+}
+
+
+.travel-two-heading {
+  width: 45%;
+  margin-top: 55px;
+}
+
+
+.travel-two-heading h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(55px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 0.82;
+  margin: 0;
+  letter-spacing: -3px;
+}
+
+
+.travel-two-heading p:last-child {
+  font-size: 11px;
+  line-height: 1.8;
+  max-width: 330px;
+  color: #bdbdbd;
+  margin-top: 30px;
+}
+
+
+/* Photo Grid */
+
+.travel-grid {
+  position: absolute;
+  right: 7vw;
+  top: 20%;
+  width: 48%;
+  height: 65%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.3fr 1fr;
+  gap: 12px;
+}
+
+
+.travel-card {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.travel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.8);
+  transition: transform 0.7s ease;
+}
+
+
+.travel-card:hover img {
+  transform: scale(1.05);
+}
+
+
+/* Large image */
+
+.travel-card.large {
+  grid-row: span 2;
+}
+
+
+/* Image text */
+
+.card-text {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  z-index: 2;
+  color: white;
+}
+
+
+.card-text span {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+
+.card-text h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 0.9;
+  margin: 5px 0 0;
+}
+
+
+/* Gradient on photos */
+
+.travel-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 45%,
+    rgba(0,0,0,0.7)
+  );
+}
+
+
+/* Quote Card */
+
+.quote-card {
+  background: #e8e0d2;
+  color: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+
+.quote-card::after {
+  display: none;
+}
+
+
+.quote-card span {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+
+.quote-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 0.9;
+  margin-top: 15px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  .travel-page {
+    min-height: 100svh;
+    padding: 30px 20px;
+  }
+
+  .travel-heading {
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  .travel-heading h1 {
+    font-size: 75px;
+  }
+
+  .travel-intro {
+    margin-top: 25px;
+  }
+
+  .travel-main-photo {
+    position: relative;
+    width: 100%;
+    height: 47vh;
+    right: auto;
+    top: auto;
+    margin-top: 35px;
+  }
+
+  .travel-footer {
+    left: 20px;
+    right: 20px;
+  }
+
+  .travel-two-heading {
+    width: 100%;
+    margin-top: 45px;
+  }
+
+  .travel-two-heading h2 {
+    font-size: 62px;
+  }
+
+  .travel-grid {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    height: 48vh;
+    margin-top: 35px;
+  }
+
+  .card-text h3 {
+    font-size: 22px;
+  }
+
+}
+
+#musicBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+    z-index: 999999;
+
+    padding: 13px 20px;
+
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+
+    background: rgba(0,0,0,0.8);
+    color: white;
+
+    font-size: 12px;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+
+/* OUR DREAMS CHAPTER — romantic editorial styling */
+.dreams-chapter{position:relative;overflow:hidden;padding:90px clamp(20px,6vw,100px);background:#0d0b06;color:#f3efe7;font-family:'Montserrat',sans-serif}
+.dreams-chapter:before{content:"♡";position:absolute;right:-35px;top:80px;font-family:Georgia,serif;font-size:clamp(180px,30vw,420px);color:rgba(156,105,110,.07);pointer-events:none}
+.dreams-shell{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+.dreams-kicker{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #b9a39c;border-bottom:1px solid #b9a39c;padding:13px 0;font-size:10px;letter-spacing:2px;color:#c6a4a3}
+.dreams-title-wrap{max-width:760px;padding:60px 0 38px}
+.dreams-eyebrow{font-size:10px;letter-spacing:3px;color:#d3a0a4;font-weight:600}
+.dreams-title-wrap h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(58px,9vw,118px);line-height:.88;font-weight:500;margin:18px 0 25px;letter-spacing:-3px}
+.dreams-title-wrap h2 em{color:#a66e76;font-weight:400}
+.dreams-intro{max-width:610px;line-height:1.95;font-size:13px;color:#c2b3b0}
+.dreams-feature{height:clamp(360px,48vw,610px);position:relative;overflow:hidden;border-radius:3px;background:#5d5050;margin:10px 0 55px;color:#fff}
+.dreams-feature>img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.8)}
+.dreams-feature-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,24,.72),rgba(20,18,24,.08) 85%),linear-gradient(0deg,rgba(20,18,24,.35),transparent 45%)}
+.dreams-feature-copy{position:absolute;left:clamp(22px,5vw,70px);bottom:clamp(35px,6vw,75px);max-width:620px}
+.dreams-feature-copy>span,.dreams-feature-number{font-size:10px;letter-spacing:3px}
+.dreams-feature-copy h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(38px,6vw,76px);font-weight:400;line-height:.98;margin:18px 0}
+.dreams-feature-copy h3 em{color:#f1c8c7}
+.dreams-feature-copy p{font-size:12px;line-height:1.8;max-width:390px}
+.dreams-feature-number{position:absolute;right:25px;top:25px;border:1px solid rgba(255,255,255,.6);padding:11px 13px}
+.dreams-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px 25px}
+.dream-card{min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(211,160,164,.22);transition:transform .35s ease,box-shadow .35s ease}
+.dream-card:hover{transform:translateY(-7px);box-shadow:0 18px 45px rgba(83,54,53,.12)}
+.dream-image{height:260px;position:relative;overflow:hidden;background:#d6c4bc}
+.dream-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease;filter:saturate(.82)}
+.dream-card:hover .dream-image img{transform:scale(1.06)}
+.dream-no{position:absolute;top:14px;left:14px;background:rgba(250,245,239,.9);color:#76545a;padding:9px 11px;font-size:10px;letter-spacing:1px}
+.dream-copy{padding:24px 23px 25px}
+.dream-tag{font-size:9px;letter-spacing:2px;color:#d3a0a4;font-weight:600}
+.dream-copy h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:31px;font-weight:500;margin:12px 0 10px;line-height:1.05}
+.dream-copy p{font-size:11px;line-height:1.9;color:#c2b3b0;min-height:83px}
+.dream-note{border-top:1px solid #4a3436;padding-top:14px;margin-top:16px;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:17px;color:#e0a8ad}
+.dreams-bottom-note{position:relative;margin-top:65px;padding:35px 35% 35px 0;border-top:1px solid #4a3436;border-bottom:1px solid #4a3436}
+.dreams-bottom-note>span{font-size:9px;letter-spacing:3px;color:#a36e75}
+.dreams-bottom-note p{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,3vw,34px);line-height:1.35;color:#e1dada;margin:15px 0 0}
+.dreams-bottom-note strong{color:#d3a0a4;font-weight:600}
+.dreams-stamp{position:absolute;right:3%;top:50%;transform:translateY(-50%) rotate(9deg);border:1px solid #b27c81;border-radius:50%;width:125px;height:125px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:10px;letter-spacing:2px;line-height:1.8;color:#a36e75}
+@media(max-width:900px){.dreams-chapter{padding:65px 22px}.dreams-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.dream-image{height:230px}.dream-copy{padding:20px 17px}.dream-copy h3{font-size:27px}.dream-copy p{min-height:0}}
+@media(max-width:560px){.dreams-kicker{font-size:8px;letter-spacing:1px}.dreams-title-wrap{padding:45px 0 28px}.dreams-grid{grid-template-columns:1fr}.dream-image{height:280px}.dreams-feature{height:430px}.dreams-feature-copy h3{font-size:43px}.dreams-bottom-note{padding:30px 0 155px}.dreams-stamp{top:auto;bottom:15px;left:0;right:auto;transform:rotate(8deg);width:105px;height:105px}}
+
+</style>
+
+
+<!-- =====================================================
+     OUR DREAMS TOGETHER — FUTURE GOALS & ADVENTURES
+===================================================== -->
+<section class="dreams-chapter" id="our-dreams">
+  <div class="dreams-shell">
+    <div class="dreams-kicker"><span>CHAPTER 05</span><span>MANAM · OUR LITTLE BIG DREAMS</span></div>
+    <div class="dreams-title-wrap">
+      <p class="dreams-eyebrow">OKA ROJU… MANAM IDDARAME ✦</p>
+      <h2>Mana <em>Dream List</em></h2>
+      <p class="dreams-intro">Ivi just plans kaadhu Meghuuu… neetho kalisi jeevitham lo collect cheyyali anukuntunna chinna chinna magic moments. Prathi adventure lo nuvvu pakkana unte chaalu. 🤍</p>
+    </div>
+
+    <div class="dreams-feature">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85" alt="Dreamy mountain landscape for a future trip" loading="lazy">
+      <div class="dreams-feature-shade"></div>
+      <div class="dreams-feature-copy"><span>OUR FIRST PROMISE</span><h3>Prathi kottha place lo…<br><em>nuvvu naa pakkana.</em></h3><p>World motham choodali. Kaani naa favourite view maatram nuvve. ♡</p></div>
+      <div class="dreams-feature-number">01 / FOREVER</div>
+    </div>
+
+    <div class="dreams-grid">
+      <article class="dream-card">
+        <div class="dream-image"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Couple travel road through a beautiful landscape" loading="lazy"><span class="dream-no">02</span></div>
+        <div class="dream-copy"><span class="dream-tag">THE TRAVELLERS</span><h3>Road trips &amp; sunsets</h3><p>Long drives, manaki ishtamaina songs, madhyalo chai… destination kanna journey ekkuva gurthundipovali.</p><div class="dream-note">“Nuvvu pakkana unte, daari edaina okay.”</div></div>
+      </article>
+      <article class="dream-card">
+        <div class="dream-image"><img src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=85" alt="Hot air balloons over a scenic destination" loading="lazy"><span class="dream-no">03</span></div>
+        <div class="dream-copy"><span class="dream-tag">THE EXPLORERS</span><h3>New places, new stories</h3><p>Oka roju mountains, inko roju beaches, inkoka roju manaki teliyani city… anni kalisi explore cheddam.</p><div class="dream-note">“Prathi trip mana story lo oka kottha page.”</div></div>
+      </article>
+      <article class="dream-card thrill-card">
+        <div class="dream-image"><img src="https://media1.thrillophilia.com/filestore/7t429sfb33opdgn2vf7rbw8vjb1x_Tandem_Bungee_Jump_57814fd6be.jpg?h=600&w=auto" alt="A couple doing a tandem bungee jump together in the sky" loading="lazy"><span class="dream-no">04</span></div>
+        <div class="dream-copy"><span class="dream-tag">THE BRAVE ONES</span><h3>Bungee jumping</h3><p>Gunde fast-ga kottukunna sare, nee hand pattukoni dhairyam ga jump cheddam! Aa moment ni life-long gurthu pettukundam.</p><div class="dream-note">“Bayam unna parledhu… kalisi face cheddam.”</div></div>
+      </article>
+      <article class="dream-card thrill-card">
+        <div class="dream-image"><img src="https://images.pexels.com/photos/739662/pexels-photo-739662.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="A couple tandem skydiving together above green fields" loading="lazy"><span class="dream-no">05</span></div>
+        <div class="dream-copy"><span class="dream-tag">SKY IS NOT THE LIMIT</span><h3>Skydiving together</h3><p>Meghala paina nunchi world ni choodali… adrenaline, navvulu, aa unforgettable feeling — anni mana memories avvali!</p><div class="dream-note">“Aakasam antha freedom… pakkana nuvvu.”</div></div>
+      </article>
+      <article class="dream-card">
+        <div class="dream-image"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85" alt="Tropical beach and blue ocean" loading="lazy"><span class="dream-no">06</span></div>
+        <div class="dream-copy"><span class="dream-tag">SLOW DAYS</span><h3>Beach sunsets</h3><p>Sand lo nadusthu, waves vintoo, sunset ayye varaku maatladukuntu time ela vellindo kooda teliyakunda undali.</p><div class="dream-note">“Time aagipothe baagundu… mana iddari kosam.”</div></div>
+      </article>
+      <article class="dream-card">
+        <div class="dream-image"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85" alt="Starry night sky above mountains" loading="lazy"><span class="dream-no">07</span></div>
+        <div class="dream-copy"><span class="dream-tag">OUR QUIET MAGIC</span><h3>Stars &amp; late-night talks</h3><p>Oka peaceful place lo stars count chesthu, mana future gurinchi maatladukuntu, chinna chinna wishes share cheskundam.</p><div class="dream-note">“Naa favourite future ante… andulo nuvvu undatame.”</div></div>
+      </article>
+    </div>
+
+    <div class="dreams-bottom-note"><span>ONE DAY, ONE BY ONE…</span><p>Ee list lo unna prathi dream ni tick cheyyali. Kaani hurry emi ledhu — mana pace lo, mana style lo, kalisi. <strong>Ready aa, Meghuuu?</strong> ♡</p><div class="dreams-stamp">TO BE<br>CONTINUED ✦</div></div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     LETTER
+===================================================== -->
+
+<section class="page letter-page is-locked" id="privateLetterPage">
+
+    <div class="page-number">
+        07
+    </div>
+
+    <div class="letter-answer-gate" id="letterAnswerGate">
+        <div class="letter-gate-kicker">A little secret, just for you ♡</div>
+        <h2 class="letter-gate-title">A Private Letter</h2>
+        <p class="letter-gate-question">Nenu nikhu yemi avthanu??</p>
+        <form id="letterAnswerForm" autocomplete="off">
+            <input class="letter-answer-input" id="letterAnswerInput" type="text" placeholder="Write your answer here…" aria-label="Write your answer" required>
+            <button class="letter-answer-submit" type="submit">Open my letter ♡</button>
+        </form>
+        <p class="letter-answer-feedback" id="letterAnswerFeedback" aria-live="polite"></p>
+    </div>
+
+    <div class="letter-wrapper reveal">
+
+        <div class="letter-header">
+
+            <span>A PRIVATE LETTER</span>
+
+            <span>FOR MEGHUMAAA</span>
+
+        </div>
+
+
+        <div class="letter-title">
+            To<br>
+            Meghumaa,
+        </div>
+
+
+        <div class="letter-text">
+
+            <p>
+                Erojhu special day naa bngrmmm
+                birthday 😁😘🫂
+            </p>
+
+            <p>
+                Happieee Birthdayyy bujuluuu😘💕🫂🫂…
+                birthday rojhu okate chala preminchiii
+                migthaaa days lo thakuva preminchanuu,
+                prathi day nuvu nakhu special yeee
+                prathi rojhu ni pai prema inka peruguthune
+                undhi😘😘🫂..
+            </p>
+
+            <p>
+                nuvu nakhu chala Ishtam maa🫂🫂,
+                nuvu naaa paina chupichina prema,
+                care and nanu chuskunaaaa vidhanam
+                nakhu Ishtam😘😘..
+            </p>
+
+            <p>
+                nenu eni jhanmalu ethinaaa ni laaa
+                manchi ammai ni Yepadki pondhalenuuu
+                nakhu Vadhu kuda,
+                yepadkiii nuvu kavali manam ilaneee
+                kalsi undali…🥹
+            </p>
+            <p>
+                Nii gurinchi entha chepina thakuveee
+            </p>
+            <p>
+                Nii mama nitho yepadkii untaduuuu😘🫂🫂🫂
+            </p>
+            <p>
+                Manam Chinna pilalluu laga adkunedhi,
+                godava padedhi tease cheskunedhi
+                nakhu chala Ishtam😁🫂🫂🫂
+            </p>
+            <p>
+                Manam Ala chesnapudu antha tom & jerry
+                gurthu vasthundhi nakhu 😂
+            </p>
+            <p>
+                Manam ilaaa ne godava padkuntuuu
+                alari cheskuntuuu undham
+            </p>
+            <p>
+                Em aina manam ilaaa ne undali 🤞🏼
+                untamm kudaaaa😘
+            </p>
+            <p>
+                Once again Puttinandhukuuu thanks yeeee
+                hippooo😁😘😘😘🫂
+            </p>
+
+            <p>
+                Happyyy Birthdayyy my gurl 😘🫂🫂🫂🫂
+            </p>
+
+        </div>
+
+
+        <div class="signature">
+            —Itluu Ni Mama 🤍
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL PAGE
+===================================================== -->
+
+<section class="page final-page">
+
+    <div class="final-content reveal">
+
+        <div class="final-small">
+            And finally...
+        </div>
+
+        <div class="final-title">
+            HAPPY<br>
+            BIRTHDAY
+        </div>
+
+        <div class="final-message">
+            Meghuuuu 🤍<br>
+            From your Mama, with lots of love.
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="footer">
+    MADE ESPECIALLY FOR MEGHUUUU · 18 OCTOBER · FROM MAMA
+</div>
+
+
+</main>
+
+
+<script>
+
+
+
+/* =========================================================
+   FIVE-CLICK CURIOSITY INTRO
+========================================================= */
+const curiosityLines = [
+    "Abbaa… antha thondara enti? 😏",
+    "Inkaa edo undi… pattuko chooddaam! 👀",
+    "Ayyo… nannu antha easy-ga pattukolevu! 😂",
+    "Sare sare… inkokka saari nokku, surprise daggarlone undi! 🤭",
+    "Oho… ready-naa? Ippudu neekosam daachinadi choodu! 🤍"
+];
+const curiosityPositions = [
+    { left:"18%", top:"28%" },
+    { left:"76%", top:"38%" },
+    { left:"28%", top:"72%" },
+    { left:"72%", top:"78%" }
+];
+let curiosityClicks = 0;
+
+function teaseButtonClick(){
+    const button = document.getElementById("curiosityButton");
+    curiosityClicks++;
+
+    if(curiosityClicks >= 5){
+        button.textContent = curiosityLines[5];
+        button.disabled = true;
+        button.style.position = "fixed";
+        button.style.left = "50%";
+        button.style.top = "85%";
+        button.style.transform = "translate(-50%,-50%)";
+
+        // Start the background music on the fifth tap, while it is still
+        // a direct user interaction (required by most browser autoplay rules).
+        // Keep the existing fifth-tap behavior, but fade the music in gently.
+        startMusicFadeIn();
+
+        setTimeout(openMagazine, 650);
+        return;
+    }
+
+    button.textContent = curiosityLines[curiosityClicks - 1];
+    const position = curiosityPositions[curiosityClicks - 1];
+    button.style.position = "fixed";
+    button.style.left = position.left;
+    button.style.top = position.top;
+    button.style.transform = "translate(-50%,-50%)";
+    button.classList.remove("moving");
+    void button.offsetWidth;
+    button.classList.add("moving");
+}
+
+/* =========================================================
+   OPEN MAGAZINE
+========================================================= */
+
+function openMagazine(){
+
+    const opening =
+        document.getElementById("opening");
+
+    opening.classList.add("hide");
+
+    document.body.style.overflowY = "auto";
+
+    setTimeout(() => {
+
+        const first =
+            document.querySelector(".cover .reveal");
+
+        if(first){
+            first.classList.add("show");
+        }
+
+        createHeart();
+
+    },700);
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const elements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach((entry) => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.15
+        }
+
+    );
+
+
+elements.forEach((element) => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+        ["♡","♥️","🤍"][Math.floor(Math.random()*3)];
+
+    heart.style.left =
+        Math.random()*100 + "vw";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    },8000);
+
+}
+
+
+/* Create occasional hearts */
+
+setInterval(() => {
+
+    if(!document.getElementById("opening")
+        .classList.contains("hide")) return;
+
+    createHeart();
+
+},2500);
+
+
+
+</script>
+<script>
+let isToggling = false;
+
+function toggleMusic() {
+  if (isToggling) return;
+  isToggling = true;
+
+  if (bgMusic.paused) {
+    bgMusic.play().then(() => {
+      musicText.textContent = "Pause Music";
+      musicBtn.classList.add("playing");
+    }).catch((err) => {
+      console.error("Playback failed:", err);
+    }).finally(() => {
+      isToggling = false;
+    });
+  } else {
+    bgMusic.pause();
+    musicText.textContent = "Play Music";
+    musicBtn.classList.remove("playing");
+    isToggling = false;
+  }
+}
+</script>
+
+
+<!-- Added accessible music control, photo lightbox and final surprise layers -->
+<button id="musicBtn" type="button" onclick="toggleMusic()" aria-label="Play background music" aria-pressed="false"><span class="music-orb" aria-hidden="true"></span><span id="musicText">Play Music</span></button>
+<div class="lightbox-overlay" id="photoLightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Close photo viewer">×</button>
+  <button class="lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+  <img id="lightboxImage" alt="Expanded memory photo">
+  <button class="lightbox-next" type="button" aria-label="Next photo">›</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+
+<div class="surprise-overlay" id="surpriseOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="One last birthday surprise">
+  <div class="surprise-card">
+    <div class="surprise-heart" aria-hidden="true">♡</div>
+    <div class="surprise-kicker">A little secret, just for you</div>
+    <div class="surprise-heading">You are my<br>favorite story.</div>
+    <p class="surprise-copy">No matter how many pages life gives us, I hope we keep filling them with silly fights, little adventures, endless care, and memories that feel like home. Happy birthday, Meghuuu. 🤍</p>
+    <button class="surprise-action" type="button" id="closeSurprise">Keep this in your heart ♡</button>
+  </div>
+</div>
+<canvas id="romanticParticles" aria-hidden="true"></canvas>
+<script>
+(function(){
+  'use strict';
+  const audio = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  const musicText = document.getElementById('musicText');
+  let fadeTimer = null;
+  let musicBusy = false;
+
+  // Smooth fade-in after the existing five-tap opening sequence.
+  window.startMusicFadeIn = function(){
+    if(!audio) return;
+    if(fadeTimer) clearInterval(fadeTimer);
+    audio.volume = 0;
+    const playPromise = audio.play();
+    if(playPromise && typeof playPromise.then === 'function'){
+      playPromise.then(function(){
+        let volume = 0;
+        fadeTimer = setInterval(function(){
+          volume = Math.min(.34, volume + .012);
+          audio.volume = volume;
+          if(volume >= .34){clearInterval(fadeTimer);fadeTimer=null;}
+        }, 45);
+        updateMusicUI(true);
+      }).catch(function(){ updateMusicUI(false); });
+    } else { audio.volume = .34; updateMusicUI(true); }
+  };
+  function updateMusicUI(playing){
+    if(!musicBtn || !musicText) return;
+    musicText.textContent = playing ? 'Pause Music' : 'Play Music';
+    musicBtn.classList.toggle('playing',playing);
+    musicBtn.setAttribute('aria-pressed',String(playing));
+    musicBtn.setAttribute('aria-label',playing?'Pause background music':'Play background music');
+  }
+  window.toggleMusic = function(){
+    if(!audio || musicBusy) return;
+    musicBusy = true;
+    if(audio.paused){
+      audio.volume = 0;
+      const p = audio.play();
+      if(p && p.then){
+        p.then(function(){
+          let v=0;
+          if(fadeTimer) clearInterval(fadeTimer);
+          fadeTimer=setInterval(function(){v=Math.min(.34,v+.017);audio.volume=v;if(v>=.34){clearInterval(fadeTimer);fadeTimer=null;}},45);
+          updateMusicUI(true);
+        }).catch(function(){updateMusicUI(false);}).finally(function(){musicBusy=false;});
+      } else {audio.volume=.34;updateMusicUI(true);musicBusy=false;}
+    } else {
+      if(fadeTimer){clearInterval(fadeTimer);fadeTimer=null;}
+      audio.pause();updateMusicUI(false);musicBusy=false;
+    }
+  };
+
+  // Photo lightbox: only actual content photos are registered; the opening/cover backgrounds stay untouched.
+  const photos = Array.from(document.querySelectorAll('.photo-container img, .memory img, .travel-card img, .travel-main-photo img, .dream-image img, .dreams-feature > img'));
+  const lightbox = document.getElementById('photoLightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const counter = document.getElementById('lightboxCounter');
+  let photoIndex = 0;
+  photos.forEach(function(img,index){img.dataset.lightbox='true';img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label',(img.alt||'Memory photo')+' — open full size');img.addEventListener('click',function(){showPhoto(index);});img.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();showPhoto(index);}});});
+  function showPhoto(index){if(!photos.length)return;photoIndex=(index+photos.length)%photos.length;const image=photos[photoIndex];lightboxImage.src=image.currentSrc||image.src;lightboxImage.alt=image.alt||'Expanded memory photo';counter.textContent=(photoIndex+1)+' / '+photos.length;lightbox.classList.add('is-open');lightbox.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';lightbox.querySelector('.lightbox-close').focus();}
+  function closePhoto(){lightbox.classList.remove('is-open');lightbox.setAttribute('aria-hidden','true');lightboxImage.removeAttribute('src');document.body.style.overflow='';}
+  lightbox.querySelector('.lightbox-close').addEventListener('click',closePhoto);
+  lightbox.querySelector('.lightbox-prev').addEventListener('click',function(){showPhoto(photoIndex-1);});
+  lightbox.querySelector('.lightbox-next').addEventListener('click',function(){showPhoto(photoIndex+1);});
+  lightbox.addEventListener('click',function(e){if(e.target===lightbox)closePhoto();});
+
+  // Keep the optional final birthday surprise; the answer gate belongs only to the private letter.
+  const finalPage=document.querySelector('.final-page');
+  const surprise=document.getElementById('surpriseOverlay');
+  if(finalPage){
+    const extra=document.createElement('div');extra.className='final-extra';
+    extra.innerHTML='<button type="button" class="surprise-action" id="openSurprise">Open one last surprise ♡</button>';
+    const content=finalPage.querySelector('.final-content');
+    if(content) content.appendChild(extra); else finalPage.appendChild(extra);
+    document.getElementById('openSurprise').addEventListener('click',function(){surprise.classList.add('is-open');surprise.setAttribute('aria-hidden','false');document.getElementById('closeSurprise').focus();});
+  }
+
+  function closeSurprise(){surprise.classList.remove('is-open');surprise.setAttribute('aria-hidden','true');}
+  document.getElementById('closeSurprise').addEventListener('click',closeSurprise);
+  surprise.addEventListener('click',function(e){if(e.target===surprise)closeSurprise();});
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closePhoto();closeSurprise();}
+    if(lightbox.classList.contains('is-open')){if(e.key==='ArrowRight')showPhoto(photoIndex+1);if(e.key==='ArrowLeft')showPhoto(photoIndex-1);}
+  });
+
+  // Subtle drifting rose petals, kept sparse on phones and disabled for reduced motion.
+  const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function makePetal(){if(reduceMotion||!document.getElementById('opening').classList.contains('hide'))return;const p=document.createElement('span');p.className='romantic-petal';p.textContent=['✿','❀','♡','·'][Math.floor(Math.random()*4)];p.style.left=Math.random()*100+'vw';p.style.fontSize=(10+Math.random()*12)+'px';p.style.animationDuration=(8+Math.random()*8)+'s';p.style.setProperty('--drift',(Math.random()*180-90)+'px');document.body.appendChild(p);setTimeout(()=>p.remove(),17000);}
+  setInterval(makePetal,window.innerWidth<700?1800:1100);
+
+  // Low-cost, decorative star particles behind the content.
+  const canvas=document.getElementById('romanticParticles');const ctx=canvas&&canvas.getContext?canvas.getContext('2d'):null;
+  if(ctx&&!reduceMotion){let w=0,h=0,dots=[];function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);w=window.innerWidth;h=window.innerHeight;canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);dots=Array.from({length:Math.min(48,Math.floor(w/22))},()=>({x:Math.random()*w,y:Math.random()*h,r:.4+Math.random()*1.2,a:.12+Math.random()*.35,s:.08+Math.random()*.22}));}function draw(){ctx.clearRect(0,0,w,h);dots.forEach(d=>{d.y-=d.s;if(d.y<0){d.y=h;d.x=Math.random()*w;}ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle='rgba(241,198,207,'+d.a+')';ctx.fill();});requestAnimationFrame(draw);}resize();window.addEventListener('resize',resize,{passive:true});draw();}
+})();
+</script>
+
+
+<script>
+(function(){
+  const page = document.getElementById('privateLetterPage');
+  const form = document.getElementById('letterAnswerForm');
+  const input = document.getElementById('letterAnswerInput');
+  const feedback = document.getElementById('letterAnswerFeedback');
+  if(!page || !form || !input || !feedback) return;
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    // Exact answer required: case-sensitive, with no alternate choices.
+    if(input.value === 'Mama'){
+      page.classList.remove('is-locked');
+      document.getElementById('letterAnswerGate').remove();
+      const wrapper = page.querySelector('.letter-wrapper');
+      if(wrapper) wrapper.classList.add('show');
+    }else{
+      feedback.textContent = 'Not quite, Meghuuu… try again, sweetheart. ♡';
+      input.focus();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
